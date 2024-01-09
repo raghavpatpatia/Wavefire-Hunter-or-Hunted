@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6070922a54ba749baeaff8a4defb7d, type: 3}
   m_Name: PlayerScriptableObject
   m_EditorClassIdentifier: 
+  spawnPosition: {x: 7, y: 7}
   moveSpeed: 5
   health: 100
   playerView: {fileID: 8204426430167940601, guid: c45960b8e29305f46a30f7ca35fccfa8, type: 3}

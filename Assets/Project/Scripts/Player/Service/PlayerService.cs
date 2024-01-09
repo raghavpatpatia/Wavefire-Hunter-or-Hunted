@@ -10,7 +10,6 @@ public class PlayerService : NonMonoSingleton<PlayerService>
         playerScriptableObject = GameSceneManager.Instance.playerScriptableObject;
         gunScriptableobject = GameSceneManager.Instance.gunScriptableobject;
         viewCamera = GameSceneManager.Instance.viewCamera;
-        InitializePlayer();
     }
     public void InitializePlayer()
     {
@@ -20,5 +19,16 @@ public class PlayerService : NonMonoSingleton<PlayerService>
     public Transform GetPlayerTransform()
     {
         return playerController.GetPlayerTransform();
+    }
+
+    public void ResetPlayer()
+    {
+        playerController.playerView.gameObject.SetActive(false);
+        playerController.OnEnable();
+    }
+
+    public PlayerController GetPlayerController()
+    {
+        return playerController;
     }
 }

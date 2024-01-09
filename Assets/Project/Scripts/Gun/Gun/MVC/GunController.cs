@@ -37,7 +37,9 @@ public class GunController
     }
     private IEnumerator Reload()
     {
+        EventManager.Instance.InvokeActivateReloadText();
         yield return new WaitForSeconds(gunModel.reloadTime);
         bulletCount = 0;
+        EventManager.Instance.InvokeDeactivateReloadText();
     }
 }

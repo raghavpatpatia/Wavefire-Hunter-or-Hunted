@@ -7,6 +7,7 @@ public class EnemyView : MonoBehaviour, IDamageable
     public EnemyController enemyController { get; private set; }
     public NavMeshAgent agent { get; private set; }
     public Rigidbody rb { get; set; }
+    [SerializeField] public HealthBar healthBar;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

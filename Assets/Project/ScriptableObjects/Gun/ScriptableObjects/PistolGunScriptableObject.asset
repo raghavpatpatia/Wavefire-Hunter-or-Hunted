@@ -15,5 +15,5 @@ MonoBehaviour:
   gunView: {fileID: 7796721490261258854, guid: 6995c5af9b1261a409a8eced80cadcd7, type: 3}
   bullet: {fileID: 11400000, guid: 0b2cf56b9c34b134f9ce8bd760ac9a81, type: 2}
   maximumBulletRange: 17
-  timeBetweenShooting: 400
-  reloadTime: 5
+  timeBetweenShooting: 500
+  reloadTime: 7

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyService : NonMonoSingleton<EnemyService>
 {
@@ -18,5 +19,18 @@ public class EnemyService : NonMonoSingleton<EnemyService>
     {
         enemyController.OnDisable();
         enemyObjectPooler.ReturnItem(enemyController);
+    }
+
+    private List<EnemyController> GetEnemyControllerList()
+    {
+        return enemyObjectPooler.enemyControllerList;
+    }
+
+    public void ReturnAllEnemies()
+    {
+        foreach (EnemyController enemy in GetEnemyControllerList())
+        {
+            ReturnEnemy(enemy);
+        }
     }
 }

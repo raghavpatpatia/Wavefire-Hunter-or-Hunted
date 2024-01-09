@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PistolBulletScriptableObject
   m_EditorClassIdentifier: 
   bulletView: {fileID: 1791971107567947643, guid: f265c527f16f6c240814fe3d20a72622, type: 3}
-  bulletSpeed: 300
+  bulletSpeed: 400
   bulletDamage: 20
   maxEnableTime: 10

@@ -22,3 +22,4 @@ MonoBehaviour:
   damage: 2
   idleDuration: 1
   refreshTimerChaseState: 1
+  enemyScore: 10

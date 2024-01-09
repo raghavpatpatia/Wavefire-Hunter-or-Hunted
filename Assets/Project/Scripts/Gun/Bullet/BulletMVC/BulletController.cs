@@ -33,6 +33,7 @@ public class BulletController
     }
     public void OnEnable(Transform bulletSpawnPoint)
     {
+        bulletView.rb = bulletView.GetComponent<Rigidbody>();
         bulletView.rb.transform.position = bulletSpawnPoint.position;
         bulletView.rb.transform.rotation = bulletSpawnPoint.rotation;
         bulletView.gameObject.SetActive(true);

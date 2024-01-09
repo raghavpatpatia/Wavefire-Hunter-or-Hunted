@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour, IDamageable
 {
     [SerializeField] public Transform gunSpawnPoint;
+    [SerializeField] public HealthBar healthBar;
     public PlayerController playerController { get; private set; }
     private Rigidbody rb;
     private void Start()

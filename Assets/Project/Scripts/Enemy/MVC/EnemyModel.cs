@@ -12,6 +12,7 @@ public class EnemyModel
     public Material defaultMaterial { get; private set; }
     public Material bombTriggerMaterial { get; private set; }
     public float timeBetweenMaterialChange { get; private set; }
+    public int enemyScore { get; private set; }
     public void SetEnemyController(EnemyController enemyController) { this.enemyController = enemyController; }
     public EnemyModel(EnemyScriptableObject scriptableObject) 
     {
@@ -24,5 +25,6 @@ public class EnemyModel
         defaultMaterial = scriptableObject.defaultMaterial;
         bombTriggerMaterial = scriptableObject.bombTriggerMaterial;
         timeBetweenMaterialChange = scriptableObject.timeBetweenMaterialChange;
+        enemyScore = scriptableObject.enemyScore;
     }
 }

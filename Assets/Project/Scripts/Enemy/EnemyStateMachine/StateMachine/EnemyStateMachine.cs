@@ -16,7 +16,7 @@ public class EnemyStateMachine
     }
     private void UpdatePlayerDistance()
     {
-        if (PlayerService.Instance.GetPlayerTransform() == null)
+        if (PlayerService.Instance.GetPlayerController().playerView.gameObject.activeSelf == false)
         {
             enemyController.enemyView.agent.ResetPath();
             enemyController.enemyView.rb.velocity = Vector3.zero;

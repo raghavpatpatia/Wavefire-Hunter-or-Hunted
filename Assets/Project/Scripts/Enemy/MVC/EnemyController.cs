@@ -14,7 +14,7 @@ public class EnemyController
         enemyModel = new EnemyModel(scriptableObject);
         enemyModel.SetEnemyController(this);
         // EnemyView
-        enemyView = GameObject.Instantiate<EnemyView>(scriptableObject.enemyView);
+        enemyView = GameObject.Instantiate<EnemyView>(scriptableObject.enemyView, new Vector3(Random.Range(-enemyModel.spawnPosition.x, enemyModel.spawnPosition.x), 0, Random.Range(-enemyModel.spawnPosition.y, enemyModel.spawnPosition.y)), Quaternion.identity);
         enemyView.SetEnemyController(this);
         // Other Initializations
         enemyStateMachine = new EnemyStateMachine(this);
@@ -62,6 +62,7 @@ public class EnemyController
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        enemyView.healthBar.UpdateHealthBar(currentHealth, defaultHealth);
         if (currentHealth <= 0)
         {
             EnemyService.Instance.ReturnEnemy(this);
@@ -74,6 +75,7 @@ public class EnemyController
         enemyView.rb.position = new Vector3(Random.Range(-enemyModel.spawnPosition.x, enemyModel.spawnPosition.x), 0, Random.Range(-enemyModel.spawnPosition.y, enemyModel.spawnPosition.y));
         enemyView.rb.rotation = Quaternion.identity;
         currentHealth = defaultHealth;
+        enemyView.healthBar.UpdateHealthBar(currentHealth, defaultHealth);
         ChangeState(EnemyStatesEnum.Idle);
         if (enemyView.gameObject.TryGetComponent<MeshRenderer>(out enemyMaterial))
         {
@@ -88,5 +90,6 @@ public class EnemyController
         enemyView.rb.rotation = Quaternion.identity;
         enemyView.gameObject.SetActive(false);
         EventManager.Instance.InvokeOnDeath();
+        EventManager.Instance.InvokeUpdateScore(enemyModel.enemyScore);
     }
 }

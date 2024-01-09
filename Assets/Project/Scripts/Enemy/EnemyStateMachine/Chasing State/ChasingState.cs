@@ -23,7 +23,7 @@ public class ChasingState : EnemyStateMachine
 
     private void UpdateState()
     {
-        if (PlayerService.Instance.GetPlayerTransform() != null)
+        if (PlayerService.Instance.GetPlayerController().playerView.gameObject.activeSelf != false)
         {
             ChasePlayer();
         }
@@ -33,9 +33,9 @@ public class ChasingState : EnemyStateMachine
     {
         enemyController.enemyView.transform.LookAt(PlayerService.Instance.GetPlayerTransform().position);
         timer -= Time.deltaTime;
-        if (timer < 0 && enemyController.enemyView.agent.isActiveAndEnabled) // Check if agent is active
+        if (timer < 0 && enemyController.enemyView.agent.isActiveAndEnabled)
         {
-            enemyController.enemyView.agent.destination = PlayerService.Instance.GetPlayerTransform().position;
+            enemyController.enemyView.agent.SetDestination(PlayerService.Instance.GetPlayerTransform().position);
             timer = refreshTimer;
         }
     }

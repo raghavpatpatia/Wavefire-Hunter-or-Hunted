@@ -13,4 +13,5 @@ public class EnemyScriptableObject : ScriptableObject
     public int damage;
     public float idleDuration;
     public float refreshTimerChaseState;
+    public int enemyScore;
 }

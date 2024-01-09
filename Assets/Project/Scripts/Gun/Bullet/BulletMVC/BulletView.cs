@@ -4,7 +4,7 @@
 public class BulletView : MonoBehaviour
 {
     public BulletController bulletController { get; private set; }
-    public Rigidbody rb { get; private set; }
+    public Rigidbody rb { get; set; }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

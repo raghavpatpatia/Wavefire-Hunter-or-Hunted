@@ -15,7 +15,7 @@ public class PlayerController
         playerModel = new PlayerModel(scriptableObject);
         playerModel.SetPlayerController(this);
         // PlayerView
-        playerView = GameObject.Instantiate<PlayerView>(scriptableObject.playerView);
+        playerView = GameObject.Instantiate<PlayerView>(scriptableObject.playerView, new Vector3(Random.Range(-playerModel.spawnPosition.x, playerModel.spawnPosition.x), 1.0f, Random.Range(-playerModel.spawnPosition.y, playerModel.spawnPosition.y)), Quaternion.identity);
         playerView.SetPlayerController(this);
         // GunHandeler
         gunHandeler = new GunHandeler(this);
@@ -61,18 +61,25 @@ public class PlayerController
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        playerView.healthBar.UpdateHealthBar(currentHealth, defaultHealth);
         if (currentHealth <= 0)
         {
             OnDisable();
         }
     }
+
     public  void OnEnable()
     {
+        playerView.transform.position = new Vector3(Random.Range(-playerModel.spawnPosition.x, playerModel.spawnPosition.x), 1.0f, Random.Range(-playerModel.spawnPosition.y, playerModel.spawnPosition.y));
+        playerView.transform.rotation = Quaternion.identity;
         currentHealth = defaultHealth;
+        playerView.healthBar.UpdateHealthBar(currentHealth, defaultHealth);
         playerView.gameObject.SetActive(true);
     }
     private void OnDisable()
     {
         playerView.gameObject.SetActive(false);
+        EventManager.Instance.InvokeGameOverText("Player Lost!!");
+        EventManager.Instance.InvokeActivateGameOverPanel();
     }
 }
